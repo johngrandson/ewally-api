@@ -41,7 +41,7 @@ $ npm i
 ## II. Rodando a api em ambiente de dev
 
 ### Iniciar o servidor em dev
-Iniciar o servidor em ambiente de dev também irá iniciar o MongoDB como um serviço em um container do docker usando o comando `docker-compose.dev.yml`.
+Iniciar o servidor em ambiente de dev também irá iniciar o MongoDB como um serviço em um container do docker usando o arquivo `docker-compose.dev.yml`.
 
 ```
 $ npm run dev
