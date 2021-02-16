@@ -17,6 +17,7 @@ const TimeStampPlugin = function (schema: Schema) {
     }
     this.updatedAt = new Date().toLocaleDateString('pt-br', { year: 'numeric', month: '2-digit', day: '2-digit' }).split('-').reverse()
       .join('-');
+
     next();
   });
 };
