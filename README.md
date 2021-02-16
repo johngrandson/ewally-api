@@ -17,14 +17,6 @@ Alguns pontos à serem observados no projeto:
 
 ## I. Instalação
 
-### Usando `curl`
-
-```
-$ bash <(curl -s https://raw.githubusercontent.com/johngrandson/public/master/scripts/generate-express-ts-app.sh)
-```
-
-### Manualmente
-
 #### 1. Clone o repositório
 
 ```
