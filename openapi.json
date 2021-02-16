@@ -16,35 +16,43 @@
   ],
   "tags": [
     {
-      "name": "boleto",
-      "description": "API de Boletos"
+      "name": "ewally-api",
+      "description": "Ewally API"
     }
   ],
   "paths": {
-    "/boleto/:id": {
+    "/boleto/{id}": {
       "get": {
         "tags": [
           "boleto"
         ],
         "summary": "Lista um boleto à partir do seu id no banco de dados",
-        "operationId": "boleto-get-by-id",
+        "operationId": "get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Linha digitável do boleto",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Resultado da busca",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "books": {
-                      "type": "object",
-                      "items": {
-                        "$ref": "#/components/schemas/BoletoSchema"
-                      }
-                    }
-                  }
+                  "$ref": "#/components/schemas/Billet"
                 }
               }
             }
+          },
+          "400": {
+            "description": "Linha de boleto inválida"
+          },
+          "404": {
+            "description": "Boleto não encontrado"
           },
           "500": {
             "description": "Server error"
@@ -55,34 +63,26 @@
   },
   "components": {
     "schemas": {
-      "DraftBoletoSchema": {
+      "Billet": {
         "type": "object",
         "properties": {
-          "barCode": {
-            "type": "string",
-            "example": "21299758700000020000001121100012100447561740"
-          },
-          "amount": {
-            "type": "string",
-            "example": "20.00"
-          },
-          "expirationDate": {
-            "type": "string",
-            "example": "15-03-2020"
-          }
-        }
-      },
-      "BoletoSchema": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/DraftBoletoSchema"
-          }
-        ],
-        "type": "object",
-        "properties": {
-          "_id": {
-            "type": "string",
-            "example": "5d7224d3b40b1a1a046697dd"
+          "billet": {
+            "type": "object",
+            "barCode": {
+              "type": "string",
+              "example": "21299758700000020000001121100012100447561740",
+              "description": "Linha digitável do boleto"
+            },
+            "amount": {
+              "type": "string",
+              "example": "20.00",
+              "description": "Valor do boleto"
+            },
+            "expirationDate": {
+              "type": "string",
+              "example": "15-03-2020",
+              "description": "Vencimento do boleto"
+            }
           }
         }
       }

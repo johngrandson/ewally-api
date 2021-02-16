@@ -47,8 +47,8 @@ Iniciar o servidor em ambiente de dev também irá iniciar o MongoDB como um ser
 $ npm run dev
 ```
 Rodar os comandos acima irá resultar em:
-* 🌏**API Server** rodando em `http://localhost:3000`
-* ⚙️**Swagger UI** em `http://localhost:3000/dev/api-docs`
+* 🌏**API Server** rodando em `http://localhost:8080`
+* ⚙️**Swagger UI** em `http://localhost:8080/dev/api-docs`
 * 🛢️**MongoDB** rodando em `mongodb://localhost:27017`
 
 ## III. Packing e Deployment
@@ -66,7 +66,7 @@ $ npm run build && npm run start
 $ docker build -t ewally-api .
 $ docker run -t -i \
       --env NODE_ENV=production \
-      --env MONGO_URL=mongodb://host.docker.internal:27017/boletos \
+      --env MONGO_URL=mongodb://host.docker.internal:27017/ewally_db \
       -p 8080:8080 \
       ewally-api
 ```
@@ -86,7 +86,7 @@ Para editar as variáveis de ambiente, crie um novo arquivo com o nome `.env` e 
 |---|---|---|---|
 | NODE_ENV  | string  | `development` | Ambiente da API. ex: `staging`  |
 |  PORT | number  | `8080` | Porta para rodar o servidor da API. |
-|  MONGO_URL | string  | `mongodb://localhost:27017/boletos` | URL do MongoDB |
+|  MONGO_URL | string  | `mongodb://localhost:27017/ewally_db` | URL do MongoDB |
 
 ## Logging
 A aplicação usa o [winston](https://github.com/winstonjs/winston) como o logger padrão. O arquivo de configuração está em `src/logger.ts`.
@@ -100,7 +100,7 @@ A aplicação usa o [winston](https://github.com/winstonjs/winston) como o logge
 |   +-- dev.sh
 +-- src
 |   +-- controllers
-|   |   +-- boleto
+|   |   +-- billet
 |   |   |   +-- add.ts
 |   |   |   +-- one.ts
 |   |   |   +-- index.ts
@@ -110,7 +110,7 @@ A aplicação usa o [winston](https://github.com/winstonjs/winston) como o logge
 |   +-- middleware
 |   |   +-- request-middleware.ts
 |   +-- models
-|   |   +-- Boleto.ts
+|   |   +-- Billet.ts
 |   +-- public
 |   |   +-- index.html
 |   +-- app.ts
