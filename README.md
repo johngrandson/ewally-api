@@ -40,7 +40,7 @@ $ npm run dev
 ```
 Rodar os comandos acima irá resultar em:
 * 🌏**API Server** rodando em `http://localhost:8080`
-* ⚙️**Swagger UI** em `http://localhost:8080/dev/api-docs`
+* ⚙️**Swagger UI** em `http://localhost:8080/api-docs`
 * 🛢️**MongoDB** rodando em `mongodb://localhost:27017`
 
 ## III. Packing e Deployment
