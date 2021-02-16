@@ -7,7 +7,8 @@ import { Billet } from '../../models/Billet';
 
 export const getBilletSchema = Joi.object().keys({
   id: Joi.string()
-  // .length(47).message('Linha digitável tem que conter 47 caracteres')
+    .length(47)
+    .message('Linha digitável tem que conter 47 caracteres')
 });
 
 const get: RequestHandler = async (req, res) => {
@@ -28,4 +29,6 @@ const get: RequestHandler = async (req, res) => {
   }
 };
 
-export default requestMiddleware(get, { validation: { params: getBilletSchema } });
+export default requestMiddleware(get, {
+  validation: { params: getBilletSchema }
+});

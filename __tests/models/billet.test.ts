@@ -1,10 +1,7 @@
-import request from 'supertest';
-import { ObjectID } from 'mongodb';
 import mockingoose from 'mockingoose';
-import app from '../../src/app';
-import BilletModel from '../../src/models/Billet';
+import { Billet } from '../../src/models/Billet';
 
-describe('test mongoose User model', () => {
+describe('test mongoose Billet model', () => {
   test('should create a valid billet', done => {
     const payload = {
       _id: '602ac4a530da4d1a302b938c',
@@ -13,9 +10,9 @@ describe('test mongoose User model', () => {
       expirationDate: '10-03-2021'
     };
 
-    mockingoose(BilletModel).toReturn(payload, 'findOne');
+    mockingoose(Billet).toReturn(payload, 'findOne');
 
-    return BilletModel.create(new BilletModel(payload)).then(billet => {
+    return Billet.create(new Billet(payload)).then(billet => {
       expect(billet.barCode).toEqual(payload.barCode);
       expect(billet.amount).toEqual(payload.amount);
       expect(billet.expirationDate).toEqual(payload.expirationDate);
@@ -34,9 +31,9 @@ describe('test mongoose User model', () => {
       updatedAt: '15-02-2021'
     };
 
-    mockingoose(BilletModel).toReturn(billet, 'findOne');
+    mockingoose(Billet).toReturn(billet, 'findOne');
 
-    return BilletModel
+    return Billet
       .findOne({ barCode: billet.barCode })
       .then(billetObj => {
         expect(billetObj.barCode).toEqual(billet.barCode);
